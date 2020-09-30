@@ -9,7 +9,7 @@ subs = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
 
 # bypass SSL check
 ctx = ssl.create_default_context()
-ctx.check_hostname = False
+ctx.check_hostname = 0
 ctx.verify_mode = ssl.CERT_NONE
 
 i = 0
