@@ -3,26 +3,31 @@
 import urllib
 import ssl
 
-subs = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
-        "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
-        "w", "x", "y", "z"]
-
 # bypass SSL check
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-i = 0
+# open text file of 
+f = open("words.txt")
+wordLines = f.readlines()
+# count the lines, this might not be the most efficient way
+lineCount = len(open("words.txt").readlines())
+
 scheme = "http://"
 topLevel = ".[yoursitehere].com"
+
 print " -------- " + "Subdomains of " + topLevel + " -------- "
 
-while i < 26:
-    subDomain = subs[i]
+i = 0
+while i < lineCount:
+    subDomain = wordLines[i]
     try:
         urllib.urlopen(scheme+subDomain+topLevel, context=ctx).getcode()
-        print subs[i] + " is an active subdomain of " + topLevel
+        print wordLines[i] + " is an active subdomain of " + topLevel
         i += 1
     except:
-        print subs[i] + " is not a subdomain"
+        print wordLines[i] + " is not a subdomain"
         i += 1
+    else:
+        print "Finished searching"
