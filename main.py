@@ -15,7 +15,7 @@ wordLines = f.readlines()
 lineCount = len(open("words.txt").readlines())
 
 scheme = "http://"
-topLevel = ".[yoursitehere].com"
+topLevel = ".badideagenerator.com"
 
 print " -------- " + "Subdomains of " + topLevel + " -------- "
 
@@ -27,7 +27,7 @@ while i < lineCount:
         print wordLines[i] + " is an active subdomain of " + topLevel
         i += 1
     except:
-        print wordLines[i] + " is not a subdomain"
+        # print wordLines[i] + " is not a subdomain"
         i += 1
     else:
         print "Finished searching"
