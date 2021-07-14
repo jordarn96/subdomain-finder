@@ -2,6 +2,7 @@
 
 import urllib
 import ssl
+import sys
 
 # bypass SSL check
 ctx = ssl.create_default_context()
@@ -18,17 +19,33 @@ print "Welcome to Subdomain Finder"
 print "Type help for a list of commands"
 
 help = "help"
+find = "find"
+exit = "exit"
+acceptInput = True
 
-cliInput = raw_input("$ ")
-if cliInput == help:
-    print "---Commands---"
+def findFunc():
+  scheme = "http://"
+  topLevel = "." + raw_input("Enter the Top Level Domain e.g. yoursite.com ")
+  print " -------- " + "Subdomains of " + topLevel + " -------- "
+
+while acceptInput:
+  cliInput = raw_input("$ ")
+  if cliInput == help:
+    print "---- Commands ----"
     print "find <mysite.com>"
-else:
+    print "exit"
+  elif cliInput == find:
+    findFunc()
+  elif cliInput == exit:
+    sys.exit(0)
+  else:
     print "Error: unrecognized input. Type help for a list of commands."
 
-scheme = "http://"
+
+#scheme = "http://"
+# below line was already commented out
 #topLevel = ".mysite.com"
-topLevel = "." + raw_input("Enter the Top Level Domain e.g. yoursite.com ")
+#topLevel = "." + raw_input("Enter the Top Level Domain e.g. yoursite.com ")
 
 print " -------- " + "Subdomains of " + topLevel + " -------- "
 
