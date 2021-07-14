@@ -10,3 +10,4 @@ A simple Python 2.7 program to find subdomains of your websites. Please only use
  - Ability to import .csv file or .txt file
  - A graphical interface
  - A better way to display findings
+ - Upgrade Python to 3.6
